@@ -168,8 +168,9 @@ export default function Hero() {
 
                     <span className="text-[10px] text-white/70">Language</span>
                   </div>
-
-                  <span className="text-[10px] text-white/80">Arabic</span>
+                  <span className="text-[10px] text-white/80">
+                    Arabic/English
+                  </span>
                 </div>
               </div>
 

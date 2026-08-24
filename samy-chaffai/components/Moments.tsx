@@ -37,7 +37,7 @@ export default function Moments() {
       ========================== */}
 
       <div
-        className="relative h-[620px] w-full sm:h-[700px] lg:h-[760px] xl:h-[820px]"
+        className="relative h-[600px] w-full sm:h-[660px] lg:h-[720px] xl:h-[780px]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -51,8 +51,11 @@ export default function Moments() {
             sizes="100vw"
             priority={index === 0}
             className={`
-              object-cover object-center
-              transition-opacity duration-700 ease-out
+              object-cover
+              object-center
+              transition-opacity
+              duration-700
+              ease-out
               ${
                 index === activeIndex
                   ? "opacity-100"
@@ -63,24 +66,62 @@ export default function Moments() {
         ))}
 
         {/* Overall dark overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-black/25" />
+        <div className="pointer-events-none absolute inset-0 bg-black/20" />
 
-        {/* Top gradient */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[160px] bg-gradient-to-b from-[#040404]/80 via-[#040404]/25 to-transparent" />
+        {/* =========================
+            TOP GRADIENT
+        ========================== */}
 
-        {/* Bottom gradient */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[330px] bg-gradient-to-b from-transparent via-[#040404]/45 to-[#040404]/90" />
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-x-0
+            top-0
+            z-[2]
+            h-[120px]
+            bg-gradient-to-b
+            from-[#040404]
+            via-[#040404]/70
+            to-transparent
+
+            sm:h-[135px]
+            lg:h-[150px]
+          "
+        />
+
+        {/* =========================
+            BOTTOM GRADIENT
+        ========================== */}
+
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-x-0
+            bottom-0
+            z-[2]
+            h-[260px]
+            bg-gradient-to-t
+            from-[#040404]
+            via-[#040404]/70
+            to-transparent
+
+            sm:h-[285px]
+            lg:h-[310px]
+          "
+        />
 
         {/* Side subtle darkening */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-black/30 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-[10%] bg-gradient-to-r from-black/25 to-transparent" />
 
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-black/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-[10%] bg-gradient-to-l from-black/20 to-transparent" />
 
         {/* =========================
             CONTENT
         ========================== */}
 
-        <div className="absolute inset-x-0 bottom-[50px] z-10 lg:bottom-[55px]">
+        <div className="absolute inset-x-0 bottom-[30px] z-10 sm:bottom-[34px] lg:bottom-[40px]">
           <div className="mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-12 xl:px-16">
             {/* =========================
                 THUMBNAILS
@@ -120,7 +161,7 @@ export default function Moments() {
                   className={`
                     relative
                     aspect-square
-                    w-[78px]
+                    w-[76px]
                     shrink-0
                     overflow-hidden
                     border
@@ -128,7 +169,7 @@ export default function Moments() {
                     transition-all
                     duration-200
 
-                    sm:w-[88px]
+                    sm:w-[86px]
 
                     lg:w-full
 
@@ -150,7 +191,7 @@ export default function Moments() {
                     className="object-cover"
                   />
 
-                  {/* subtle thumbnail overlay */}
+                  {/* Thumbnail overlay */}
                   <div
                     className={`
                       pointer-events-none
@@ -159,11 +200,7 @@ export default function Moments() {
                       bg-black
                       transition-opacity
                       duration-200
-                      ${
-                        activeIndex === index
-                          ? "opacity-0"
-                          : "opacity-15"
-                      }
+                      ${activeIndex === index ? "opacity-0" : "opacity-15"}
                     `}
                   />
                 </button>
@@ -171,14 +208,16 @@ export default function Moments() {
             </div>
 
             {/* Divider */}
-            <div className="mt-5 h-px w-full bg-white/70 lg:mt-6" />
+            <div className="mt-4 h-px w-full bg-white/65 lg:mt-5" />
 
             {/* Bottom text */}
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:mt-7">
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between lg:mt-5">
               {/* Left */}
               <h2 className="font-[family-name:var(--font-host-grotesk)] text-[20px] font-normal leading-none text-white sm:text-[22px] lg:text-[24px]">
                 <span className="text-white/80">[</span>
+
                 <span className="mx-3">People &amp; Moments</span>
+
                 <span className="text-white/80">]</span>
               </h2>
 

@@ -59,7 +59,18 @@ export default function Collaborations() {
   return (
     <section
       id="collaborations"
-      className="w-full bg-[#040404] px-5 py-20 sm:px-8 md:py-24 lg:px-12 lg:py-28 xl:px-16"
+      className="
+        w-full
+        bg-[#040404]
+        px-5
+        py-8
+        sm:px-8
+        sm:py-10
+        md:py-12
+        lg:px-12
+        lg:py-12
+        xl:px-16
+      "
     >
       <div className="mx-auto w-full max-w-[1440px]">
         {/* Top label */}
@@ -74,12 +85,12 @@ export default function Collaborations() {
         </div>
 
         {/* Title */}
-        <h2 className="mt-12 font-[family-name:var(--font-host-grotesk)] text-[46px] font-normal leading-none tracking-[-0.04em] text-white sm:text-[56px] lg:mt-14 lg:text-[64px]">
+        <h2 className="mt-8 font-[family-name:var(--font-host-grotesk)] text-[46px] font-normal leading-none tracking-[-0.04em] text-white sm:text-[56px] lg:mt-10 lg:text-[64px]">
           Brand Collaborations
         </h2>
 
         {/* Desktop grid */}
-        <div className="mt-16 hidden grid-cols-5 gap-[3px] md:grid lg:mt-20">
+        <div className="mt-10 hidden grid-cols-5 gap-[3px] md:grid lg:mt-14">
           {/* Red statement block */}
           <div className="col-span-2 flex min-h-[154px] items-center justify-center bg-[#C20000] px-8 text-center">
             <p className="font-[family-name:var(--font-inter)] text-[18px] font-semibold uppercase leading-tight text-white lg:text-[20px]">
@@ -107,9 +118,9 @@ export default function Collaborations() {
         </div>
 
         {/* Mobile */}
-        <div className="mt-12 md:hidden">
+        <div className="mt-8 md:hidden">
           {/* Red statement block */}
-          <div className="flex min-h-[120px] items-center justify-center bg-[#C20000] px-6 text-center">
+          <div className="flex min-h-[110px] items-center justify-center bg-[#C20000] px-6 text-center">
             <p className="font-[family-name:var(--font-inter)] text-[16px] font-semibold uppercase leading-tight text-white">
               We did crazy things with them
             </p>

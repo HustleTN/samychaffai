@@ -79,12 +79,9 @@ export default function About() {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Smooth ease-out
       const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-      const currentValue = target * easedProgress;
-
-      setFollowers(currentValue);
+      setFollowers(target * easedProgress);
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
@@ -117,23 +114,25 @@ export default function About() {
           alt="Samy Chaffai"
           fill
           sizes="100vw"
-          className="object-cover object-center"
+          priority
+          className="object-cover"
+          style={{ objectPosition: "center 18%" }}
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/15" />
+        {/* Overall subtle darkening */}
+        <div className="absolute inset-0 bg-black/10" />
 
-        {/* Top fade */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[130px] bg-gradient-to-b from-[#040404] to-transparent" />
+        {/* Top smooth transition */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-[115px] bg-gradient-to-b from-[#040404] via-[#040404]/70 to-transparent" />
 
-        {/* Bottom fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] bg-gradient-to-b from-transparent to-[#040404]" />
+        {/* Bottom smooth transition */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[170px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
 
         {/* =========================
-            RIGHT CONTENT
+            LEFT-ALIGNED CONTENT
         ========================== */}
 
-        <div className="absolute right-[7%] top-[12%] z-10 w-[42%] max-w-[680px] lg:right-[8%] xl:right-[10%]">
+        <div className="absolute left-[12%] top-[12%] z-10 flex w-[42%] max-w-[680px] flex-col items-start text-left">
           {/* Name */}
           <h2 className="font-[family-name:var(--font-host-grotesk)] text-[clamp(30px,2.4vw,42px)] font-normal leading-none tracking-[-0.03em] text-white">
             Samy Chaffai
@@ -145,7 +144,7 @@ export default function About() {
           </p>
 
           {/* Followers */}
-          <div className="mt-10 inline-flex items-center gap-4 bg-[#C20000] px-6 py-5 lg:px-7 xl:px-8">
+          <div className="mt-8 inline-flex items-center gap-4 bg-[#C20000] px-6 py-5 lg:px-7 xl:px-8">
             <span className="min-w-[145px] shrink-0 font-[family-name:var(--font-host-grotesk)] text-[clamp(36px,3vw,56px)] font-semibold leading-none tracking-[-0.04em] text-white">
               {followerText}
             </span>
@@ -156,7 +155,7 @@ export default function About() {
           </div>
 
           {/* Socials */}
-          <div className="mt-7 flex items-center gap-7 xl:gap-9">
+          <div className="mt-5 flex items-center justify-start gap-7 xl:gap-9">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -164,7 +163,7 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="transition-all duration-300 hover:-translate-y-1 hover:opacity-70"
+                className="transition-all duration-300 ease-out hover:-translate-y-1 hover:opacity-70"
               >
                 <Image
                   src={social.icon}
@@ -182,36 +181,18 @@ export default function About() {
             AWARDS
         ========================== */}
 
-        <div className="absolute bottom-[14%] left-1/2 z-10 flex w-[76%] -translate-x-1/2 items-end justify-between gap-4">
+        <div className="absolute bottom-[10%] left-1/2 z-10 flex w-[76%] -translate-x-1/2 items-end justify-between gap-4">
           {awards.map((award, index) => (
             <div
               key={award}
-              className="
-                group
-                flex
-                flex-1
-                items-center
-                justify-center
-                transition-transform
-                duration-300
-                ease-out
-                hover:-translate-y-[6px]
-                hover:scale-[1.055]
-              "
+              className="group flex flex-1 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.055]"
             >
               <Image
                 src={award}
                 alt={`Award ${index + 1}`}
                 width={250}
                 height={150}
-                className="
-                  h-auto
-                  w-full
-                  max-w-[230px]
-                  transition-opacity
-                  duration-300
-                  group-hover:opacity-100
-                "
+                className="h-auto w-full max-w-[230px]"
               />
             </div>
           ))}
@@ -230,14 +211,15 @@ export default function About() {
             alt="Samy Chaffai"
             fill
             sizes="100vw"
-            className="object-cover object-[42%_center]"
+            className="object-cover"
+            style={{ objectPosition: "center 20%" }}
           />
 
-          <div className="absolute inset-0 bg-black/15" />
+          <div className="absolute inset-0 bg-black/12" />
 
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[90px] bg-gradient-to-b from-[#040404] to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[85px] bg-gradient-to-b from-[#040404] via-[#040404]/65 to-transparent" />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-b from-transparent to-[#040404]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
         </div>
 
         {/* Mobile content */}
@@ -290,16 +272,11 @@ export default function About() {
             {awards.map((award, index) => (
               <div
                 key={award}
-                className={`
-                  flex
-                  items-center
-                  justify-center
-                  transition-transform
-                  duration-300
-                  active:scale-[1.04]
-
-                  ${index === awards.length - 1 ? "col-span-2" : ""}
-                `}
+                className={
+                  index === awards.length - 1
+                    ? "col-span-2 flex justify-center transition-transform duration-300 active:scale-[1.04]"
+                    : "flex justify-center transition-transform duration-300 active:scale-[1.04]"
+                }
               >
                 <Image
                   src={award}

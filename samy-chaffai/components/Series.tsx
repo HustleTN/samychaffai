@@ -29,7 +29,7 @@ export default function Series() {
           DESKTOP / TABLET
       ========================== */}
 
-      <div className="relative hidden min-h-[760px] md:block lg:min-h-[820px] xl:min-h-[860px]">
+      <div className="relative hidden min-h-[720px] md:block lg:min-h-[780px] xl:min-h-[820px]">
         {/* Background */}
         <Image
           src="/assets/series/microdramabackground.avif"
@@ -39,17 +39,17 @@ export default function Series() {
           className="object-cover object-center"
         />
 
-        {/* Dark overlay */}
+        {/* Overall dark overlay */}
         <div className="absolute inset-0 bg-black/35" />
 
-        {/* Top fade */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[130px] bg-gradient-to-b from-[#040404] to-transparent" />
+        {/* Top smooth transition */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-[120px] bg-gradient-to-b from-[#040404] via-[#040404]/70 to-transparent" />
 
-        {/* Bottom fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[150px] bg-gradient-to-b from-transparent to-[#040404]" />
+        {/* Bottom smooth transition */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[170px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-12 pt-20 xl:px-16">
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-12 pt-12 xl:px-16">
           {/* Top line */}
           <div className="flex items-center justify-between">
             <span className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/45 sm:text-[13px]">
@@ -62,7 +62,7 @@ export default function Series() {
           </div>
 
           {/* Main row */}
-          <div className="mt-14 flex items-end justify-between gap-8">
+          <div className="mt-10 flex items-end justify-between gap-8">
             <div className="flex items-end gap-4">
               <h2 className="font-[family-name:var(--font-host-grotesk)] text-[48px] font-normal leading-none tracking-[-0.04em] text-white lg:text-[56px] xl:text-[64px]">
                 Micro Drama: The New Normal
@@ -79,7 +79,7 @@ export default function Series() {
           </div>
 
           {/* Episodes */}
-          <div className="mx-auto mt-20 grid w-[64%] max-w-[760px] grid-cols-3 gap-5">
+          <div className="mx-auto mt-14 grid w-[64%] max-w-[760px] grid-cols-3 gap-5">
             {episodes.map((episode) => (
               <a
                 key={episode.title}
@@ -98,15 +98,18 @@ export default function Series() {
                     className="object-cover transition-all duration-300 group-hover:scale-[1.015] group-hover:opacity-35"
                   />
 
-                  {/* Dark hover overlay */}
+                  {/* Hover overlay */}
                   <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/30" />
 
                   {/* Hover CTA */}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <div className="relative flex h-[46px] min-w-[165px] items-center justify-center gap-2 bg-[#C20000] px-5 font-[family-name:var(--font-inter)] text-[14px] font-semibold text-white">
                       <span className="absolute left-0 top-0 h-[9px] w-[9px] border-l-2 border-t-2 border-white" />
+
                       <span className="absolute right-0 top-0 h-[9px] w-[9px] border-r-2 border-t-2 border-white" />
+
                       <span className="absolute bottom-0 left-0 h-[9px] w-[9px] border-b-2 border-l-2 border-white" />
+
                       <span className="absolute bottom-0 right-0 h-[9px] w-[9px] border-b-2 border-r-2 border-white" />
 
                       <span>Check Reference</span>
@@ -117,7 +120,7 @@ export default function Series() {
                 </div>
 
                 {/* Title */}
-                <div className="flex min-h-[78px] items-start justify-center px-2 pt-4 text-center">
+                <div className="flex min-h-[70px] items-start justify-center px-2 pt-3 text-center">
                   <h3 className="font-[family-name:var(--font-host-grotesk)] text-[17px] font-normal leading-[1.35] text-white lg:text-[18px]">
                     {episode.title}
                   </h3>
@@ -134,7 +137,7 @@ export default function Series() {
 
       <div className="relative md:hidden">
         {/* Background */}
-        <div className="absolute inset-x-0 top-0 h-[720px]">
+        <div className="absolute inset-x-0 top-0 h-[700px]">
           <Image
             src="/assets/series/microdramabackground.avif"
             alt=""
@@ -143,14 +146,17 @@ export default function Series() {
             className="object-cover object-[48%_center]"
           />
 
+          {/* Overall dark overlay */}
           <div className="absolute inset-0 bg-black/45" />
 
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-[#040404] to-transparent" />
+          {/* Top smooth transition */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[95px] bg-gradient-to-b from-[#040404] via-[#040404]/70 to-transparent" />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[260px] bg-gradient-to-b from-transparent to-[#040404]" />
+          {/* Bottom smooth transition */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[230px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
         </div>
 
-        <div className="relative z-10 px-5 pb-16 pt-20 sm:px-8">
+        <div className="relative z-10 px-5 pb-10 pt-8 sm:px-8 sm:pb-12 sm:pt-10">
           {/* Top line */}
           <div className="flex items-center justify-between">
             <span className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/45">
@@ -163,7 +169,7 @@ export default function Series() {
           </div>
 
           {/* Heading */}
-          <div className="mt-10">
+          <div className="mt-8">
             <div className="flex flex-wrap items-end gap-x-3 gap-y-2">
               <h2 className="font-[family-name:var(--font-host-grotesk)] text-[42px] font-normal leading-[0.98] tracking-[-0.04em] text-white sm:text-[50px]">
                 Micro Drama:
@@ -176,13 +182,13 @@ export default function Series() {
               </span>
             </div>
 
-            <p className="mt-4 font-[family-name:var(--font-host-grotesk)] text-[17px] font-normal text-white">
+            <p className="mt-3 font-[family-name:var(--font-host-grotesk)] text-[17px] font-normal text-white">
               Cinema concept/Drama
             </p>
           </div>
 
           {/* Episodes */}
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="mt-9 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {episodes.map((episode, index) => (
               <a
                 key={episode.title}

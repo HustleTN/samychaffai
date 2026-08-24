@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 const references = [
   {
     title: "Against the Top",
-    subtitle: "2WTATennis – Women Ons Jabeur",
+    subtitle: "2WTATennis – Women Ons\u00A0Jabeur",
     image: "/assets/references/reference1.avif",
     href: "https://www.instagram.com/samy.chaffai/reel/CkVwpSwqTeq/",
   },
@@ -43,10 +43,6 @@ export default function References() {
   const [visibleCards, setVisibleCards] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  /* =========================================
-     TRIGGER WHEN CARDS AREA ENTERS VIEWPORT
-  ========================================= */
-
   useEffect(() => {
     const trigger = triggerRef.current;
 
@@ -70,10 +66,6 @@ export default function References() {
     return () => observer.disconnect();
   }, []);
 
-  /* =========================================
-     QUICK CARD CASCADE
-  ========================================= */
-
   useEffect(() => {
     if (!hasAnimated) return;
 
@@ -91,13 +83,21 @@ export default function References() {
   return (
     <section
       id="references"
-      className="w-full bg-[#040404] px-5 py-20 sm:px-8 md:py-24 lg:px-12 lg:py-28 xl:px-16"
+      className="
+        w-full
+        bg-[#040404]
+        px-5
+        py-8
+        sm:px-8
+        sm:py-10
+        md:py-12
+        lg:px-12
+        lg:py-12
+        xl:px-16
+      "
     >
       <div className="mx-auto w-full max-w-[1440px]">
-        {/* =========================
-            TOP LABEL
-        ========================== */}
-
+        {/* Top label */}
         <div className="flex items-center justify-between">
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/45 sm:text-[13px]">
             References
@@ -108,22 +108,16 @@ export default function References() {
           </span>
         </div>
 
-        {/* =========================
-            TITLE
-        ========================== */}
-
-        <h2 className="mt-12 font-[family-name:var(--font-host-grotesk)] text-[46px] font-normal leading-none tracking-[-0.04em] text-white sm:text-[56px] lg:mt-14 lg:text-[64px]">
+        {/* Title */}
+        <h2 className="mt-8 font-[family-name:var(--font-host-grotesk)] text-[46px] font-normal leading-none tracking-[-0.04em] text-white sm:text-[56px] lg:mt-10 lg:text-[64px]">
           References
         </h2>
 
         {/* Animation trigger */}
         <div ref={triggerRef} className="h-px w-full" />
 
-        {/* =========================
-            CARDS
-        ========================== */}
-
-        <div className="mt-14 grid grid-cols-1 gap-9 sm:grid-cols-2 lg:mt-20 lg:grid-cols-5 lg:gap-4">
+        {/* Cards */}
+        <div className="mt-10 grid grid-cols-1 gap-9 sm:grid-cols-2 lg:mt-14 lg:grid-cols-5 lg:gap-4">
           {references.map((reference, index) => {
             const isVisible = index < visibleCards;
 
@@ -142,7 +136,6 @@ export default function References() {
                   transition-all
                   duration-500
                   ease-out
-
                   ${
                     isVisible
                       ? "translate-y-0 opacity-100"
@@ -150,10 +143,7 @@ export default function References() {
                   }
                 `}
               >
-                {/* =========================
-                    IMAGE
-                ========================== */}
-
+                {/* Image */}
                 <div className="relative h-[520px] w-full overflow-hidden bg-[#111] sm:h-[500px] lg:h-[390px] xl:h-[430px]">
                   <Image
                     src={reference.image}
@@ -170,14 +160,9 @@ export default function References() {
                   {/* Desktop hover overlay */}
                   <div className="pointer-events-none absolute inset-0 hidden bg-black/0 transition-colors duration-300 group-hover:bg-black/25 lg:block" />
 
-                  {/* =========================
-                      DESKTOP HOVER BUTTON
-                  ========================== */}
-
+                  {/* Desktop hover button */}
                   <div className="pointer-events-none absolute inset-0 hidden items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:flex">
                     <div className="relative flex h-[48px] min-w-[180px] items-center justify-center gap-2 bg-[#C20000] px-5 font-[family-name:var(--font-inter)] text-[14px] font-semibold text-white">
-                      {/* corners */}
-
                       <span className="absolute left-0 top-0 h-[9px] w-[9px] border-l-2 border-t-2 border-white" />
 
                       <span className="absolute right-0 top-0 h-[9px] w-[9px] border-r-2 border-t-2 border-white" />
@@ -193,10 +178,7 @@ export default function References() {
                   </div>
                 </div>
 
-                {/* =========================
-                    TEXT
-                ========================== */}
-
+                {/* Text */}
                 <div className="flex min-h-[72px] flex-col items-center justify-start px-2 pt-3 text-center sm:min-h-[82px] lg:min-h-[105px] lg:pt-5">
                   <h3 className="font-[family-name:var(--font-host-grotesk)] text-[18px] font-normal leading-tight text-white lg:text-[16px] xl:text-[18px]">
                     {reference.title}
@@ -209,16 +191,10 @@ export default function References() {
                   )}
                 </div>
 
-                {/* =========================
-                    RED STROKE
-                ========================== */}
-
+                {/* Red stroke */}
                 <div className="mt-2 h-[4px] w-full bg-[#C20000] transition-opacity duration-300 group-hover:opacity-50 lg:mt-auto" />
 
-                {/* =========================
-                    MOBILE BUTTON
-                ========================== */}
-
+                {/* Mobile button */}
                 <div className="mt-2 lg:hidden">
                   <div className="flex h-[52px] w-full items-center justify-center gap-2 bg-[#252525] font-[family-name:var(--font-inter)] text-[15px] font-semibold text-white transition-colors duration-200 active:bg-[#303030] min-[390px]:text-[16px]">
                     <span>Check Reference</span>
