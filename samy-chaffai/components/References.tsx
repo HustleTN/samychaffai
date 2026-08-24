@@ -104,7 +104,7 @@ export default function References() {
           </span>
 
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-medium text-white sm:text-[13px]">
-            02 <span className="text-white/35">/ 06</span>
+            02 <span className="text-white/35">/ 05</span>
           </span>
         </div>
 
