@@ -100,7 +100,7 @@ export default function References() {
         {/* Top label */}
         <div className="flex items-center justify-between">
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/45 sm:text-[13px]">
-            References
+            Highlights
           </span>
 
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-medium text-white sm:text-[13px]">
@@ -163,6 +163,7 @@ export default function References() {
                   {/* Desktop hover button */}
                   <div className="pointer-events-none absolute inset-0 hidden items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:flex">
                     <div className="relative flex h-[48px] min-w-[180px] items-center justify-center gap-2 bg-[#C20000] px-5 font-[family-name:var(--font-inter)] text-[14px] font-semibold text-white">
+                      {/* Corner marks */}
                       <span className="absolute left-0 top-0 h-[9px] w-[9px] border-l-2 border-t-2 border-white" />
 
                       <span className="absolute right-0 top-0 h-[9px] w-[9px] border-r-2 border-t-2 border-white" />
@@ -194,9 +195,40 @@ export default function References() {
                 {/* Red stroke */}
                 <div className="mt-2 h-[4px] w-full bg-[#C20000] transition-opacity duration-300 group-hover:opacity-50 lg:mt-auto" />
 
-                {/* Mobile button */}
+                {/* =========================
+                    MOBILE BUTTON
+                ========================== */}
+
                 <div className="mt-2 lg:hidden">
-                  <div className="flex h-[52px] w-full items-center justify-center gap-2 bg-[#252525] font-[family-name:var(--font-inter)] text-[15px] font-semibold text-white transition-colors duration-200 active:bg-[#303030] min-[390px]:text-[16px]">
+                  <div
+                    className="
+                      relative
+                      flex
+                      h-[52px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      bg-[#252525]
+                      font-[family-name:var(--font-inter)]
+                      text-[15px]
+                      font-semibold
+                      text-white
+                      transition-colors
+                      duration-200
+                      active:bg-[#303030]
+                      min-[390px]:text-[16px]
+                    "
+                  >
+                    {/* Same four white corners */}
+                    <span className="pointer-events-none absolute left-0 top-0 h-[10px] w-[10px] border-l-2 border-t-2 border-white" />
+
+                    <span className="pointer-events-none absolute right-0 top-0 h-[10px] w-[10px] border-r-2 border-t-2 border-white" />
+
+                    <span className="pointer-events-none absolute bottom-0 left-0 h-[10px] w-[10px] border-b-2 border-l-2 border-white" />
+
+                    <span className="pointer-events-none absolute bottom-0 right-0 h-[10px] w-[10px] border-b-2 border-r-2 border-white" />
+
                     <span>Check Reference</span>
 
                     <ArrowUpRight size={17} strokeWidth={2} />

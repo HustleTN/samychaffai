@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Clock3, Languages, Video } from "lucide-react";
+import { Languages, Video } from "lucide-react";
 import Button from "./Button";
 
 const MASTERCLASS_URL = "https://learning.samychaffai.com/";
@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/20" />
 
         {/* Bottom fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[260px] bg-gradient-to-b from-transparent via-[#040404]/50 to-[#040404]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[60px] bg-gradient-to-b from-transparent via-[#040404]/50 to-[#040404]" />
 
         {/* =========================
             LEFT CONTENT
@@ -43,20 +43,14 @@ export default function Hero() {
           {/* Camera frame */}
           <div className="relative mt-[75px] h-[280px] w-[76%] max-w-[510px]">
             <span className="absolute left-0 top-0 h-[12px] w-[12px] border-l-2 border-t-2 border-white" />
-
             <span className="absolute right-0 top-0 h-[12px] w-[12px] border-r-2 border-t-2 border-white" />
-
             <span className="absolute bottom-0 left-0 h-[12px] w-[12px] border-b-2 border-l-2 border-white" />
-
             <span className="absolute bottom-0 right-0 h-[12px] w-[12px] border-b-2 border-r-2 border-white" />
 
             {/* REC */}
             <div className="absolute left-[24px] top-[30px] flex items-center gap-[8px]">
               <span className="relative flex h-[10px] w-[10px] items-center justify-center">
-                {/* expanding ring */}
                 <span className="rec-ring absolute h-[10px] w-[10px] rounded-full bg-[#ff0000]" />
-
-                {/* actual dot */}
                 <span className="rec-dot relative h-[10px] w-[10px] rounded-full bg-[#ff0000]" />
               </span>
 
@@ -117,7 +111,7 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="px-[17px] pb-[17px] pt-[16px]">
+            <div className="px-[17px] pb-[15px] pt-[16px]">
               <h2 className="font-[family-name:var(--font-host-grotesk)] text-[20px] font-medium leading-[1.03] tracking-[-0.025em] text-white">
                 Phone Editing &amp;
                 <br />
@@ -129,7 +123,8 @@ export default function Hero() {
               </p>
 
               {/* Details */}
-              <div className="mt-[20px] space-y-[14px]">
+              <div className="mt-[18px] space-y-[14px]">
+                {/* Videos */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-[9px]">
                     <Video
@@ -144,20 +139,7 @@ export default function Hero() {
                   <span className="text-[10px] text-white/80">12</span>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-[9px]">
-                    <Clock3
-                      size={14}
-                      strokeWidth={1.7}
-                      className="text-[#C20000]"
-                    />
-
-                    <span className="text-[10px] text-white/70">Duration</span>
-                  </div>
-
-                  <span className="text-[10px] text-white/80">2 hours</span>
-                </div>
-
+                {/* Language */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-[9px]">
                     <Languages
@@ -168,19 +150,20 @@ export default function Hero() {
 
                     <span className="text-[10px] text-white/70">Language</span>
                   </div>
+
                   <span className="text-[10px] text-white/80">
                     Arabic/English
                   </span>
                 </div>
               </div>
 
-              <p className="mt-[20px] text-center text-[8px] text-white/35">
+              <p className="mt-[17px] text-center text-[8px] text-white/35">
                 Instant access · Lifetime access · Watch on any device
               </p>
             </div>
           </div>
 
-          {/* Masterclass CTA */}
+          {/* CTA */}
           <Button
             href={MASTERCLASS_URL}
             target="_blank"
@@ -190,7 +173,7 @@ export default function Hero() {
             Join the Course
           </Button>
 
-          {/* InShot floating */}
+          {/* InShot */}
           <div className="hero-float-inshot absolute -right-[26px] -top-[34px] xl:-right-[32px] xl:-top-[40px]">
             <Image
               src="/assets/header/inshot.svg"
@@ -201,7 +184,7 @@ export default function Hero() {
             />
           </div>
 
-          {/* CapCut floating */}
+          {/* CapCut */}
           <div className="hero-float-capcut absolute -left-[56px] top-[155px] xl:-left-[70px] xl:top-[165px]">
             <Image
               src="/assets/header/capcut.svg"
@@ -232,10 +215,11 @@ export default function Hero() {
 
           <div className="absolute inset-0 bg-black/35" />
 
-          <div className="absolute inset-x-0 bottom-0 h-[280px] bg-gradient-to-b from-transparent to-[#040404]" />
+          {/* Bottom fade */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50px] bg-gradient-to-b from-transparent via-[#040404]/45 to-[#040404]" />
         </div>
 
-        <div className="relative z-10 px-5 pb-16 pt-[145px] sm:px-8">
+        <div className="relative z-10 px-5 pt-[145px] sm:px-8">
           {/* Title */}
           <h1 className="text-center font-[family-name:var(--font-host-grotesk)] text-[clamp(43px,12vw,64px)] font-normal leading-[0.93] tracking-[-0.045em] text-white">
             <span className="block">Film Director &amp;</span>
@@ -246,14 +230,11 @@ export default function Hero() {
           {/* Camera frame */}
           <div className="relative mx-auto mt-14 h-[230px] w-full max-w-[360px]">
             <span className="absolute left-0 top-0 h-[11px] w-[11px] border-l-2 border-t-2 border-white" />
-
             <span className="absolute right-0 top-0 h-[11px] w-[11px] border-r-2 border-t-2 border-white" />
-
             <span className="absolute bottom-0 left-0 h-[11px] w-[11px] border-b-2 border-l-2 border-white" />
-
             <span className="absolute bottom-0 right-0 h-[11px] w-[11px] border-b-2 border-r-2 border-white" />
 
-            {/* REC mobile */}
+            {/* REC */}
             <div className="absolute left-5 top-6 flex items-center gap-[8px]">
               <span className="relative flex h-[9px] w-[9px] items-center justify-center">
                 <span className="rec-ring absolute h-[9px] w-[9px] rounded-full bg-[#ff0000]" />
@@ -316,7 +297,7 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="px-4 pb-5 pt-5">
+              <div className="px-4 pb-4 pt-5">
                 <h2 className="font-[family-name:var(--font-host-grotesk)] text-[22px] font-medium leading-[1.05] tracking-[-0.025em] text-white">
                   Phone Editing &amp;
                   <br />
@@ -327,7 +308,8 @@ export default function Hero() {
                   Learn Samy&apos;s complete mobile editing workflow
                 </p>
 
-                <div className="mt-6 space-y-4">
+                {/* Details */}
+                <div className="mt-5 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <Video
@@ -344,22 +326,6 @@ export default function Hero() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <Clock3
-                        size={15}
-                        strokeWidth={1.7}
-                        className="text-[#C20000]"
-                      />
-
-                      <span className="text-[11px] text-white/70">
-                        Duration
-                      </span>
-                    </div>
-
-                    <span className="text-[11px] text-white/80">2 hours</span>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
                       <Languages
                         size={15}
                         strokeWidth={1.7}
@@ -371,17 +337,19 @@ export default function Hero() {
                       </span>
                     </div>
 
-                    <span className="text-[11px] text-white/80">Arabic</span>
+                    <span className="text-[11px] text-white/80">
+                      Arabic/English
+                    </span>
                   </div>
                 </div>
 
-                <p className="mt-6 text-center text-[8px] text-white/35">
+                <p className="mt-5 text-center text-[8px] text-white/35">
                   Instant access · Lifetime access · Watch on any device
                 </p>
               </div>
             </div>
 
-            {/* Mobile CTA */}
+            {/* CTA */}
             <Button
               href={MASTERCLASS_URL}
               target="_blank"

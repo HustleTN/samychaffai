@@ -77,6 +77,7 @@ export default function About() {
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
+
       const progress = Math.min(elapsed / duration, 1);
 
       const easedProgress = 1 - Math.pow(1 - progress, 3);
@@ -116,20 +117,28 @@ export default function About() {
           sizes="100vw"
           priority
           className="object-cover"
-          style={{ objectPosition: "center 18%" }}
+          style={{
+            objectPosition: "center 18%",
+          }}
         />
 
         {/* Overall subtle darkening */}
         <div className="absolute inset-0 bg-black/10" />
 
-        {/* Top smooth transition */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-[115px] bg-gradient-to-b from-[#040404] via-[#040404]/70 to-transparent" />
+        {/* =========================
+            TOP FADE
+        ========================== */}
 
-        {/* Bottom smooth transition */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[170px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-[60px] bg-gradient-to-b from-[#040404] via-[#040404]/50 to-transparent" />
 
         {/* =========================
-            LEFT-ALIGNED CONTENT
+            BOTTOM FADE
+        ========================== */}
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[60px] bg-gradient-to-t from-[#040404] via-[#040404]/50 to-transparent" />
+
+        {/* =========================
+            LEFT CONTENT
         ========================== */}
 
         <div className="absolute left-[12%] top-[12%] z-10 flex w-[42%] max-w-[680px] flex-col items-start text-left">
@@ -212,14 +221,18 @@ export default function About() {
             fill
             sizes="100vw"
             className="object-cover"
-            style={{ objectPosition: "center 20%" }}
+            style={{
+              objectPosition: "center 20%",
+            }}
           />
 
           <div className="absolute inset-0 bg-black/12" />
 
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[85px] bg-gradient-to-b from-[#040404] via-[#040404]/65 to-transparent" />
+          {/* Top fade */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[50px] bg-gradient-to-b from-[#040404] via-[#040404]/45 to-transparent" />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[180px] bg-gradient-to-t from-[#040404] via-[#040404]/75 to-transparent" />
+          {/* Bottom fade */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50px] bg-gradient-to-t from-[#040404] via-[#040404]/45 to-transparent" />
         </div>
 
         {/* Mobile content */}

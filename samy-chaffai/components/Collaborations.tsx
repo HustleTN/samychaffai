@@ -76,7 +76,7 @@ export default function Collaborations() {
         {/* Top label */}
         <div className="flex items-center justify-between">
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/45 sm:text-[13px]">
-            Collaboration
+            Selected Partners
           </span>
 
           <span className="font-[family-name:var(--font-inter)] text-[12px] font-medium text-white sm:text-[13px]">

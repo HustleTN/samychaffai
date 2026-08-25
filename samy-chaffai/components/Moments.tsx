@@ -261,10 +261,6 @@ export default function Moments() {
                 <span className="mx-3">People &amp; Moments</span>
                 <span className="text-white/80">]</span>
               </h2>
-
-              <p className="font-[family-name:var(--font-host-grotesk)] text-[18px] font-normal leading-tight text-white sm:text-right lg:text-[24px]">
-                Events · Collaborations · Community
-              </p>
             </div>
           </div>
         </div>
