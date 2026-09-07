@@ -54,6 +54,7 @@ export default function About() {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
+          observer.disconnect();
         }
       },
       {
@@ -77,9 +78,7 @@ export default function About() {
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
-
       const progress = Math.min(elapsed / duration, 1);
-
       const easedProgress = 1 - Math.pow(1 - progress, 3);
 
       setFollowers(target * easedProgress);
@@ -125,16 +124,10 @@ export default function About() {
         {/* Overall subtle darkening */}
         <div className="absolute inset-0 bg-black/10" />
 
-        {/* =========================
-            TOP FADE
-        ========================== */}
-
+        {/* Top fade */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-[60px] bg-gradient-to-b from-[#040404] via-[#040404]/50 to-transparent" />
 
-        {/* =========================
-            BOTTOM FADE
-        ========================== */}
-
+        {/* Bottom fade */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[60px] bg-gradient-to-t from-[#040404] via-[#040404]/50 to-transparent" />
 
         {/* =========================
@@ -143,17 +136,41 @@ export default function About() {
 
         <div className="absolute left-[12%] top-[12%] z-10 flex w-[42%] max-w-[680px] flex-col items-start text-left">
           {/* Name */}
-          <h2 className="font-[family-name:var(--font-host-grotesk)] text-[clamp(30px,2.4vw,42px)] font-normal leading-none tracking-[-0.03em] text-white">
+          <h2
+            className={`font-[family-name:var(--font-host-grotesk)] text-[clamp(30px,2.4vw,42px)] font-normal leading-none tracking-[-0.03em] text-white transition-all duration-700 ease-out motion-reduce:transition-none ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+          >
             Samy Chaffai
           </h2>
 
           {/* Role */}
-          <p className="mt-3 font-[family-name:var(--font-host-grotesk)] text-[clamp(20px,1.7vw,31px)] font-normal leading-tight text-white/55">
+          <p
+            className={`mt-3 font-[family-name:var(--font-host-grotesk)] text-[clamp(20px,1.7vw,31px)] font-normal leading-tight text-white/55 transition-all duration-700 ease-out motion-reduce:transition-none ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "80ms" : "0ms",
+            }}
+          >
             Film Director &amp; Content Creator
           </p>
 
           {/* Followers */}
-          <div className="mt-8 inline-flex items-center gap-4 bg-[#C20000] px-6 py-5 lg:px-7 xl:px-8">
+          <div
+            className={`mt-8 inline-flex items-center gap-4 bg-[#C20000] px-6 py-5 transition-all duration-700 ease-out motion-reduce:transition-none lg:px-7 xl:px-8 ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "160ms" : "0ms",
+            }}
+          >
             <span className="min-w-[145px] shrink-0 font-[family-name:var(--font-host-grotesk)] text-[clamp(36px,3vw,56px)] font-semibold leading-none tracking-[-0.04em] text-white">
               {followerText}
             </span>
@@ -164,7 +181,16 @@ export default function About() {
           </div>
 
           {/* Socials */}
-          <div className="mt-5 flex items-center justify-start gap-7 xl:gap-9">
+          <div
+            className={`mt-5 flex items-center justify-start gap-7 transition-all duration-700 ease-out motion-reduce:transition-none xl:gap-9 ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "240ms" : "0ms",
+            }}
+          >
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -194,15 +220,24 @@ export default function About() {
           {awards.map((award, index) => (
             <div
               key={award}
-              className="group flex flex-1 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-[6px] hover:scale-[1.055]"
+              className={`flex flex-1 items-center justify-center transition-all duration-700 ease-out motion-reduce:transition-none ${
+                hasAnimated
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-5 opacity-0"
+              }`}
+              style={{
+                transitionDelay: hasAnimated ? `${320 + index * 70}ms` : "0ms",
+              }}
             >
-              <Image
-                src={award}
-                alt={`Award ${index + 1}`}
-                width={250}
-                height={150}
-                className="h-auto w-full max-w-[230px]"
-              />
+              <div className="flex w-full items-center justify-center transition-transform duration-150 ease-out hover:-translate-y-[6px] hover:scale-[1.055]">
+                <Image
+                  src={award}
+                  alt={`Award ${index + 1}`}
+                  width={250}
+                  height={150}
+                  className="h-auto w-full max-w-[230px]"
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -238,17 +273,41 @@ export default function About() {
         {/* Mobile content */}
         <div className="relative z-10 -mt-14 px-5 pb-14 sm:px-8">
           {/* Name */}
-          <h2 className="font-[family-name:var(--font-host-grotesk)] text-[34px] font-normal leading-none tracking-[-0.03em] text-white sm:text-[40px]">
+          <h2
+            className={`font-[family-name:var(--font-host-grotesk)] text-[34px] font-normal leading-none tracking-[-0.03em] text-white transition-all duration-700 ease-out motion-reduce:transition-none sm:text-[40px] ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+          >
             Samy Chaffai
           </h2>
 
           {/* Role */}
-          <p className="mt-2 font-[family-name:var(--font-host-grotesk)] text-[18px] font-normal leading-tight text-white/55 sm:text-[20px]">
+          <p
+            className={`mt-2 font-[family-name:var(--font-host-grotesk)] text-[18px] font-normal leading-tight text-white/55 transition-all duration-700 ease-out motion-reduce:transition-none sm:text-[20px] ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "80ms" : "0ms",
+            }}
+          >
             Film Director &amp; Content Creator
           </p>
 
           {/* Followers */}
-          <div className="mt-7 flex w-full items-center gap-3 bg-[#C20000] px-5 py-5">
+          <div
+            className={`mt-7 flex w-full items-center gap-3 bg-[#C20000] px-5 py-5 transition-all duration-700 ease-out motion-reduce:transition-none ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "160ms" : "0ms",
+            }}
+          >
             <span className="min-w-[110px] shrink-0 font-[family-name:var(--font-host-grotesk)] text-[40px] font-semibold leading-none tracking-[-0.04em] text-white sm:min-w-[130px] sm:text-[46px]">
               {followerText}
             </span>
@@ -259,7 +318,16 @@ export default function About() {
           </div>
 
           {/* Socials */}
-          <div className="mt-6 flex items-center justify-between">
+          <div
+            className={`mt-6 flex items-center justify-between transition-all duration-700 ease-out motion-reduce:transition-none ${
+              hasAnimated
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: hasAnimated ? "240ms" : "0ms",
+            }}
+          >
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -285,19 +353,30 @@ export default function About() {
             {awards.map((award, index) => (
               <div
                 key={award}
-                className={
+                className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
                   index === awards.length - 1
-                    ? "col-span-2 flex justify-center transition-transform duration-300 active:scale-[1.04]"
-                    : "flex justify-center transition-transform duration-300 active:scale-[1.04]"
-                }
+                    ? "col-span-2 flex justify-center"
+                    : "flex justify-center"
+                } ${
+                  hasAnimated
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: hasAnimated
+                    ? `${320 + index * 70}ms`
+                    : "0ms",
+                }}
               >
-                <Image
-                  src={award}
-                  alt={`Award ${index + 1}`}
-                  width={220}
-                  height={130}
-                  className="h-auto w-full max-w-[180px]"
-                />
+                <div className="flex justify-center transition-transform duration-150 ease-out active:scale-[1.04]">
+                  <Image
+                    src={award}
+                    alt={`Award ${index + 1}`}
+                    width={220}
+                    height={130}
+                    className="h-auto w-full max-w-[180px]"
+                  />
+                </div>
               </div>
             ))}
           </div>

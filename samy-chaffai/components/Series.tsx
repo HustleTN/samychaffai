@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
@@ -20,6 +23,31 @@ const episodes = [
 ];
 
 export default function Series() {
+  const desktopRef = useRef<HTMLDivElement | null>(null);
+  const [desktopVisible, setDesktopVisible] = useState(false);
+
+  useEffect(() => {
+    const element = desktopRef.current;
+
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setDesktopVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="series"
@@ -29,7 +57,10 @@ export default function Series() {
           DESKTOP / TABLET
       ========================== */}
 
-      <div className="relative hidden min-h-[720px] md:block lg:min-h-[780px] xl:min-h-[820px]">
+      <div
+        ref={desktopRef}
+        className="relative hidden min-h-[720px] md:block lg:min-h-[780px] xl:min-h-[820px]"
+      >
         {/* Background */}
         <Image
           src="/assets/series/microdramabackground.avif"
@@ -62,7 +93,13 @@ export default function Series() {
           </div>
 
           {/* Main row */}
-          <div className="mt-10 flex items-end justify-between gap-8">
+          <div
+            className={`mt-10 flex items-end justify-between gap-8 transition-all duration-700 ease-out motion-reduce:transition-none ${
+              desktopVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
+            }`}
+          >
             <div className="flex items-end gap-4">
               <h2 className="font-[family-name:var(--font-host-grotesk)] text-[48px] font-normal leading-none tracking-[-0.04em] text-white lg:text-[56px] xl:text-[64px]">
                 Micro Drama: The New Normal
@@ -80,13 +117,22 @@ export default function Series() {
 
           {/* Episodes */}
           <div className="mx-auto mt-14 grid w-[64%] max-w-[760px] grid-cols-3 gap-5">
-            {episodes.map((episode) => (
+            {episodes.map((episode, index) => (
               <a
                 key={episode.title}
                 href={episode.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex min-w-0 flex-col"
+                className={`group flex min-w-0 flex-col transition-all duration-700 ease-out motion-reduce:transition-none ${
+                  desktopVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-5 opacity-0"
+                }`}
+                style={{
+                  transitionDelay: desktopVisible
+                    ? `${180 + index * 110}ms`
+                    : "0ms",
+                }}
               >
                 {/* Image */}
                 <div className="relative aspect-[0.83] w-full overflow-hidden border-[3px] border-white">
@@ -217,9 +263,40 @@ export default function Series() {
                   {episode.title}
                 </h3>
 
-                {/* Mobile button */}
-                <div className="mt-3">
-                  <div className="flex h-[52px] w-full items-center justify-center gap-2 bg-[#252525] font-[family-name:var(--font-inter)] text-[15px] font-semibold text-white transition-colors duration-200 active:bg-[#303030] sm:text-[16px]">
+                {/* =========================
+                    MOBILE BUTTON
+                ========================== */}
+
+                <div className="mt-2">
+                  <div
+                    className="
+                      relative
+                      flex
+                      h-[52px]
+                      w-full
+                      items-center
+                      justify-center
+                      gap-2
+                      bg-[#252525]
+                      font-[family-name:var(--font-inter)]
+                      text-[15px]
+                      font-semibold
+                      text-white
+                      transition-colors
+                      duration-200
+                      active:bg-[#303030]
+                      min-[390px]:text-[16px]
+                    "
+                  >
+                    {/* Same four white corners */}
+                    <span className="pointer-events-none absolute left-0 top-0 h-[10px] w-[10px] border-l-2 border-t-2 border-white" />
+
+                    <span className="pointer-events-none absolute right-0 top-0 h-[10px] w-[10px] border-r-2 border-t-2 border-white" />
+
+                    <span className="pointer-events-none absolute bottom-0 left-0 h-[10px] w-[10px] border-b-2 border-l-2 border-white" />
+
+                    <span className="pointer-events-none absolute bottom-0 right-0 h-[10px] w-[10px] border-b-2 border-r-2 border-white" />
+
                     <span>Check Reference</span>
 
                     <ArrowUpRight size={17} strokeWidth={2} />

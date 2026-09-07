@@ -1,10 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import { Languages, Video } from "lucide-react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
 const MASTERCLASS_URL = "https://learning.samychaffai.com/";
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden bg-[#040404]">
       {/* =========================
@@ -34,14 +47,25 @@ export default function Hero() {
 
         <div className="absolute left-[4%] top-[27%] z-10 flex w-[43%] max-w-[720px] flex-col items-center xl:left-[4.5%]">
           {/* Heading */}
-          <h1 className="w-full text-center font-[family-name:var(--font-host-grotesk)] text-[clamp(52px,5vw,96px)] font-normal leading-[0.94] tracking-[-0.045em] text-white">
+          <h1
+            className={`w-full text-center font-[family-name:var(--font-host-grotesk)] text-[clamp(52px,5vw,96px)] font-normal leading-[0.94] tracking-[-0.045em] text-white transition-all duration-700 ease-out motion-reduce:transition-none ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
             <span className="block whitespace-nowrap">Film Director &amp;</span>
 
             <span className="block whitespace-nowrap">Content Creator</span>
           </h1>
 
           {/* Camera frame */}
-          <div className="relative mt-[75px] h-[280px] w-[76%] max-w-[510px]">
+          <div
+            className={`relative mt-[75px] h-[280px] w-[76%] max-w-[510px] transition-all duration-700 ease-out motion-reduce:transition-none ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: mounted ? "120ms" : "0ms",
+            }}
+          >
             <span className="absolute left-0 top-0 h-[12px] w-[12px] border-l-2 border-t-2 border-white" />
             <span className="absolute right-0 top-0 h-[12px] w-[12px] border-r-2 border-t-2 border-white" />
             <span className="absolute bottom-0 left-0 h-[12px] w-[12px] border-b-2 border-l-2 border-white" />
@@ -78,7 +102,7 @@ export default function Hero() {
 
         <div
           id="masterclass"
-          className="
+          className={`
             absolute
             right-[4%]
             top-[31%]
@@ -90,12 +114,22 @@ export default function Hero() {
             p-[9px]
             shadow-2xl
 
+            transition-all
+            duration-700
+            ease-out
+            motion-reduce:transition-none
+
             lg:right-[4.5%]
             lg:w-[330px]
 
             xl:right-[5.3%]
             xl:w-[355px]
-          "
+
+            ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}
+          `}
+          style={{
+            transitionDelay: mounted ? "200ms" : "0ms",
+          }}
         >
           {/* Card */}
           <div className="bg-[#050505]">
@@ -221,14 +255,25 @@ export default function Hero() {
 
         <div className="relative z-10 px-5 pt-[145px] sm:px-8">
           {/* Title */}
-          <h1 className="text-center font-[family-name:var(--font-host-grotesk)] text-[clamp(43px,12vw,64px)] font-normal leading-[0.93] tracking-[-0.045em] text-white">
+          <h1
+            className={`text-center font-[family-name:var(--font-host-grotesk)] text-[clamp(43px,12vw,64px)] font-normal leading-[0.93] tracking-[-0.045em] text-white transition-all duration-700 ease-out motion-reduce:transition-none ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+          >
             <span className="block">Film Director &amp;</span>
 
             <span className="block">Content Creator</span>
           </h1>
 
           {/* Camera frame */}
-          <div className="relative mx-auto mt-14 h-[230px] w-full max-w-[360px]">
+          <div
+            className={`relative mx-auto mt-14 h-[230px] w-full max-w-[360px] transition-all duration-700 ease-out motion-reduce:transition-none ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: mounted ? "120ms" : "0ms",
+            }}
+          >
             <span className="absolute left-0 top-0 h-[11px] w-[11px] border-l-2 border-t-2 border-white" />
             <span className="absolute right-0 top-0 h-[11px] w-[11px] border-r-2 border-t-2 border-white" />
             <span className="absolute bottom-0 left-0 h-[11px] w-[11px] border-b-2 border-l-2 border-white" />
@@ -261,7 +306,12 @@ export default function Hero() {
           {/* Mobile masterclass */}
           <div
             id="masterclass-mobile"
-            className="relative mx-auto mt-16 w-full max-w-[410px] border border-white/10 bg-[#111] p-[9px]"
+            className={`relative mx-auto mt-16 w-full max-w-[410px] border border-white/10 bg-[#111] p-[9px] transition-all duration-700 ease-out motion-reduce:transition-none ${
+              mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+            }`}
+            style={{
+              transitionDelay: mounted ? "200ms" : "0ms",
+            }}
           >
             {/* InShot */}
             <div className="hero-float-inshot-mobile absolute -right-[12px] -top-[32px] z-10">

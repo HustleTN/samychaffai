@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
 const navLinks = [
@@ -48,6 +48,15 @@ const socialLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -57,7 +66,9 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="relative z-50"
+          className={`relative z-50 transition-all duration-700 ease-out motion-reduce:transition-none ${
+            mounted ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+          }`}
           aria-label="Samy Chaffai home"
           onClick={closeMenu}
         >
@@ -72,7 +83,14 @@ export default function Navbar() {
         </a>
 
         {/* Desktop navigation */}
-        <div className="hidden items-center gap-7 lg:flex xl:gap-11 2xl:gap-[62px]">
+        <div
+          className={`hidden items-center gap-7 transition-all duration-700 ease-out motion-reduce:transition-none lg:flex xl:gap-11 2xl:gap-[62px] ${
+            mounted ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+          }`}
+          style={{
+            transitionDelay: mounted ? "80ms" : "0ms",
+          }}
+        >
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -87,7 +105,14 @@ export default function Navbar() {
         </div>
 
         {/* Desktop socials */}
-        <div className="hidden items-center gap-4 lg:flex xl:gap-[20px]">
+        <div
+          className={`hidden items-center gap-4 transition-all duration-700 ease-out motion-reduce:transition-none lg:flex xl:gap-[20px] ${
+            mounted ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+          }`}
+          style={{
+            transitionDelay: mounted ? "150ms" : "0ms",
+          }}
+        >
           {socialLinks.map((social) => (
             <a
               key={social.name}
@@ -114,7 +139,12 @@ export default function Navbar() {
           onClick={() => setMenuOpen((current) => !current)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="relative z-50 flex h-10 w-10 items-center justify-center text-white lg:hidden"
+          className={`relative z-50 flex h-10 w-10 items-center justify-center text-white transition-all duration-700 ease-out motion-reduce:transition-none lg:hidden ${
+            mounted ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+          }`}
+          style={{
+            transitionDelay: mounted ? "80ms" : "0ms",
+          }}
         >
           {menuOpen ? (
             <X size={27} strokeWidth={1.8} />
