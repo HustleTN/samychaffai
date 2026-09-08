@@ -5,15 +5,20 @@ import "./globals.css";
 const hostGrotesk = Host_Grotesk({
   subsets: ["latin"],
   variable: "--font-host-grotesk",
+  display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
+const SITE_URL = "https://www.samychaffai.com";
+const OG_IMAGE = "https://www.samychaffai.com/og-image.jpg";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.samychaffai.com"),
+  metadataBase: new URL(SITE_URL),
 
   title: {
     default: "Samy Chaffai — Film Director & Content Creator",
@@ -24,21 +29,30 @@ export const metadata: Metadata = {
     "Official portfolio of Samy Chaffai, film director and content creator known for cinematic storytelling, branded collaborations, original series, and digital content.",
 
   alternates: {
-    canonical: "https://www.samychaffai.com",
+    canonical: SITE_URL,
   },
 
   openGraph: {
     title: "Samy Chaffai — Film Director & Content Creator",
+
     description:
       "Film director and content creator creating cinematic stories, original series, and branded experiences.",
-    url: "https://www.samychaffai.com",
+
+    url: SITE_URL,
+
     siteName: "Samy Chaffai",
+
     type: "website",
+
+    locale: "en_US",
+
     images: [
       {
-        url: "/og-image.jpg",
+        url: OG_IMAGE,
+        secureUrl: OG_IMAGE,
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Samy Chaffai — Film Director & Content Creator",
       },
     ],
@@ -46,15 +60,23 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
+
     title: "Samy Chaffai — Film Director & Content Creator",
+
     description:
       "Film director and content creator creating cinematic stories, original series, and branded experiences.",
-    images: ["/og-image.jpg"],
+
+    images: [OG_IMAGE],
   },
 
   robots: {
     index: true,
     follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 
   icons: {
@@ -73,6 +95,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
+
     apple: [
       {
         url: "/favicon/apple-touch-icon.png",
