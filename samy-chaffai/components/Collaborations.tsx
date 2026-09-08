@@ -9,8 +9,8 @@ const brands = [
     logo: "/assets/brands/warnerbros.svg",
   },
   {
-    name: "Disney",
-    logo: "/assets/brands/disney.svg",
+    name: "1 BF Summit",
+    logo: "/assets/brands/1BillionFollowersSummit.svg",
   },
   {
     name: "Pixar",
