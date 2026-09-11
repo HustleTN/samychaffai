@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 
-const EMAIL = "contact@test.com";
+const EMAIL = "Test@test.com";
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
