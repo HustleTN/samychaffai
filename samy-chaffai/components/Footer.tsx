@@ -109,12 +109,12 @@ export default function Footer() {
           <p className="font-[family-name:var(--font-inter)] text-[12px] font-normal text-white/80 sm:text-[13px]">
             Website by{" "}
             <a
-              href="https://novirastudio.com"
+              href="https://heniflow.com"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-opacity duration-200 hover:opacity-60"
             >
-              Novira Studio
+              HeniFlow
             </a>
           </p>
         </div>
